@@ -1,3 +1,7 @@
+ <a href="https://travis-ci.org/stasm/innerself">
+   <img alt="Build Status" src="https://travis-ci.org/stasm/innerself.svg?branch=master" />
+</a>
+
 #To test
 
 - ~an empty universe should tick~
