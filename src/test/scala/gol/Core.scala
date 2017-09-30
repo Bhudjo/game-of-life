@@ -1,10 +1,17 @@
 package gol
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{WordSpec, Matchers}
 
-class Core extends FlatSpec with Matchers {
-  "An empty Universe" should "tick" in {
+class Core extends WordSpec with Matchers {
+  "An empty Universe" should {
     val emptyUniverse: Universe = Universe.empty
-    emptyUniverse.tick shouldBe an[Universe]
+
+    "tick" in {
+      emptyUniverse.tick shouldBe an[Universe]
+    }
+
+    "stay empty" in {
+      emptyUniverse.tick shouldBe emptyUniverse
+    }
   }
 }
