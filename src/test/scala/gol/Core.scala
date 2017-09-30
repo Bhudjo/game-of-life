@@ -8,11 +8,3 @@ class Core extends FlatSpec with Matchers {
     emptyUniverse.tick shouldBe an[Universe]
   }
 }
-
-case class Universe() {
-  def tick: Universe = this
-}
-
-case object Universe {
-  def empty: Universe = Universe()
-}
