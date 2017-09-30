@@ -1,4 +1,4 @@
- <a href="https://travis-ci.org/stasm/innerself">
+<a href="https://travis-ci.org/stasm/innerself">
    <img alt="Build Status" src="https://travis-ci.org/stasm/innerself.svg?branch=master" />
 </a>
 

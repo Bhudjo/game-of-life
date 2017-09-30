@@ -24,5 +24,8 @@ class Core extends WordSpec with Matchers {
     "have one alive cell" in {
       singleCellUniverse.howManyAliveCells shouldBe 1
     }
+    "not have alive cells after a tick" in {
+      singleCellUniverse.tick.howManyAliveCells shouldBe 0
+    }
   }
 }
