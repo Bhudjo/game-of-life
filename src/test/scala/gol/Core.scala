@@ -9,7 +9,6 @@ class Core extends WordSpec with Matchers {
     "tick" in {
       emptyUniverse.tick shouldBe an[Universe]
     }
-
     "stay empty" in {
       emptyUniverse.tick shouldBe emptyUniverse
     }
