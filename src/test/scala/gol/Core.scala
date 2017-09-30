@@ -22,7 +22,7 @@ class Core extends WordSpec with Matchers {
     val singleCellUniverse: Universe = Universe(listOfOneCell)
 
     "have one alive cell" in {
-      singleCellUniverse.aliveCells shouldBe listOfOneCell
+      singleCellUniverse.aliveCells.filter(_.isAlive).size shouldBe 1
     }
   }
 }
