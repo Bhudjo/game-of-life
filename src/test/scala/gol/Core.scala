@@ -13,5 +13,8 @@ class Core extends WordSpec with Matchers {
     "stay empty" in {
       emptyUniverse.tick shouldBe emptyUniverse
     }
+    "have no alive cells" in {
+      emptyUniverse.aliveCells shouldBe List.empty
+    }
   }
 }
