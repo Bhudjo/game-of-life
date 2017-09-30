@@ -1,3 +1,5 @@
 package gol
 
-case class Cell()
+case class Cell(state: Boolean) {
+  def isAlive = state
+}

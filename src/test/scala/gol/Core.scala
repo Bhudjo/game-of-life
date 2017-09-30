@@ -18,11 +18,11 @@ class Core extends WordSpec with Matchers {
     }
   }
   "A single cell universe" should {
-    val listOfOneCell = List(Cell())
+    val listOfOneCell = List(Cell(true))
     val singleCellUniverse: Universe = Universe(listOfOneCell)
 
     "have one alive cell" in {
-      singleCellUniverse.aliveCells.filter(_.isAlive).size shouldBe 1
+      singleCellUniverse.aliveCells.count(_.isAlive) shouldBe 1
     }
   }
 }
