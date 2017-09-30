@@ -4,12 +4,14 @@ case class Universe(cells: Seq[Cell]) {
 
   def howManyAliveCells = cells.count(_.isAlive)
 
-  def countAliveNeighbours(cell: Cell): Int = 0
+  def countAliveNeighboursOf(cell: Cell): Int = 0
 
-  def tick: Universe =
-    Universe(cells map { cell =>
-      cell.tick(countAliveNeighbours(cell))
-    })
+  def tick: Universe = {
+    val futureCells: Seq[Cell] = cells map { thisCell =>
+      thisCell.evolve(countAliveNeighboursOf(thisCell))
+    }
+    Universe(futureCells)
+  }
 }
 
 case object Universe {

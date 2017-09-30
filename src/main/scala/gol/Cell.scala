@@ -1,7 +1,7 @@
 package gol
 
 case class Cell(state: Boolean) {
-  def tick(numberNeighboursAlive: Int): Cell = {
+  def evolve(numberNeighboursAlive: Int): Cell = {
     if (isAlive) {
       if (numberNeighboursAlive < 2) Cell(false)
       else {
