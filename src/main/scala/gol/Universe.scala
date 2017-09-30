@@ -1,6 +1,9 @@
 package gol
 
-case class Universe(aliveCells: Seq[Cell]) {
+case class Universe(cells: Seq[Cell]) {
+
+  def howManyAliveCells = cells.count(_.isAlive)
+
   def tick: Universe = this
 }
 

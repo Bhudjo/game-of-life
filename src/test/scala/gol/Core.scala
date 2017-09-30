@@ -14,7 +14,7 @@ class Core extends WordSpec with Matchers {
       emptyUniverse.tick shouldBe emptyUniverse
     }
     "have no alive cells" in {
-      emptyUniverse.aliveCells shouldBe List.empty
+      emptyUniverse.howManyAliveCells shouldBe 0
     }
   }
   "A single cell universe" should {
@@ -22,7 +22,7 @@ class Core extends WordSpec with Matchers {
     val singleCellUniverse: Universe = Universe(listOfOneCell)
 
     "have one alive cell" in {
-      singleCellUniverse.aliveCells.count(_.isAlive) shouldBe 1
+      singleCellUniverse.howManyAliveCells shouldBe 1
     }
   }
 }
