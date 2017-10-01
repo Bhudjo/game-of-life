@@ -4,7 +4,7 @@ import org.scalatest.{WordSpec, Matchers}
 
 class Core extends WordSpec with Matchers {
   "An empty Universe" should {
-    val emptyUniverse: Universe = Universe.empty
+    val emptyUniverse = Universe.empty
 
     "tick" in {
       emptyUniverse.tick shouldBe an[LinearUniverse]
@@ -38,24 +38,27 @@ class Core extends WordSpec with Matchers {
     "have three cells in it" should {
       val threeCellRow: Seq[Cell] =
         (0 to 2).map(i => Cell(isAlive = true, LinearPosition(i)))
-      val planarUniverse = LinearUniverse(threeCellRow)
+      val linearUniverse = LinearUniverse(threeCellRow)
 
       "know the neighbours of a cell" in {
-        val itsNeighbours = planarUniverse getNeighboursOf threeCellRow(1).position
+        val itsNeighbours = linearUniverse getNeighboursOf threeCellRow(1).position
         itsNeighbours should (contain(threeCellRow.head) and contain(
           threeCellRow(2)))
       }
       "evolve in a universe with only one cell alive" in {
-        planarUniverse.tick.howManyAliveCellsInAllUniverse shouldBe 1
+        linearUniverse.tick.howManyAliveCellsInAllUniverse shouldBe 1
       }
       "should evolve in a empty universe after two ticks" in {
-        planarUniverse.tick.tick.howManyAliveCellsInAllUniverse shouldBe 0
+        linearUniverse.tick.tick.howManyAliveCellsInAllUniverse shouldBe 0
+      }
+      "exist" in {
+        Universe.withNDimensions(1) shouldBe a[LinearUniverse]
       }
     }
   }
   "A planar universe (two dimensions)" should {
     "exist" in {
-      Universe.withNDimensions(2) shouldBe a[LinearUniverse]
+      Universe.withNDimensions(2) shouldBe a[PlanarUniverse]
     }
   }
 }

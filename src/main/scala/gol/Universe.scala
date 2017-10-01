@@ -1,28 +1,26 @@
 package gol
 
-trait Universe {
+trait Universe[A] {
 
-  def cells: Seq[Cell]
+  def cells: A
 
-  def getNeighboursOf(position: LinearPosition): Set[Cell]
+  def getNeighboursOf(position: Position): Set[Cell]
 
-  def howManyAliveCellsInAllUniverse: Int = howManyAliveCells(cells)
+  def howManyAliveCellsInAllUniverse: Int
 
-  def howManyAliveCells(cells: Seq[Cell]): Int = cells.count(_.isAlive)
+  def howManyAliveCells(cells: Set[Cell]): Int
 
-  def tick: LinearUniverse = {
-    val futureCells: Seq[Cell] = cells map { thisCell =>
-      thisCell.evolve(countAliveNeighboursOf(thisCell))
-    }
-    LinearUniverse(futureCells)
-  }
+  def tick: Universe[A]
 
   def countAliveNeighboursOf(cell: Cell): Int =
-    howManyAliveCells(getNeighboursOf(cell.position).toSeq)
+    howManyAliveCells(getNeighboursOf(cell.position))
 }
 
 case object Universe {
-  def withNDimensions(i: Int): Universe = ???
+  def withNDimensions(i: Int) = {
+    if (i == 1) LinearUniverse(List.empty)
+    else PlanarUniverse(List(List.empty))
+  }
 
-  def empty: Universe = LinearUniverse(List.empty)
+  def empty: Universe[LinearCells] = LinearUniverse(List.empty)
 }

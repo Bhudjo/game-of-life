@@ -1,4 +1,5 @@
 package gol
 
-case class LinearPosition(i: Int)
-case class PlanarPosition(x: Int, y: Int)
+trait Position
+case class LinearPosition(i: Int) extends Position
+case class PlanarPosition(x: Int, y: Int) extends Position
