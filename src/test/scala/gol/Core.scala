@@ -7,7 +7,7 @@ class Core extends WordSpec with Matchers {
     val emptyUniverse: Universe = Universe.empty
 
     "tick" in {
-      emptyUniverse.tick shouldBe an[Universe]
+      emptyUniverse.tick shouldBe an[LinearUniverse]
     }
     "stay empty" in {
       emptyUniverse.tick shouldBe emptyUniverse
@@ -19,7 +19,7 @@ class Core extends WordSpec with Matchers {
   "A single cell universe" should {
     val position = LinearPosition(0)
     val listOfOneCell = List(Cell(isAlive = true, position))
-    val singleCellUniverse: Universe = Universe(listOfOneCell)
+    val singleCellUniverse: LinearUniverse = LinearUniverse(listOfOneCell)
 
     "have one alive cell" in {
       singleCellUniverse.howManyAliveCellsInAllUniverse shouldBe 1
@@ -38,7 +38,7 @@ class Core extends WordSpec with Matchers {
     "have three cells in it" should {
       val threeCellRow: Seq[Cell] =
         (0 to 2).map(i => Cell(isAlive = true, LinearPosition(i)))
-      val planarUniverse = Universe(threeCellRow)
+      val planarUniverse = LinearUniverse(threeCellRow)
 
       "know the neighbours of a cell" in {
         val itsNeighbours = planarUniverse getNeighboursOf threeCellRow(1).position
@@ -55,7 +55,7 @@ class Core extends WordSpec with Matchers {
   }
   "A planar universe (two dimensions)" should {
     "exist" in {
-      Universe.withNDimensions(2) shouldBe an[Universe]
+      Universe.withNDimensions(2) shouldBe a[LinearUniverse]
     }
   }
 }
