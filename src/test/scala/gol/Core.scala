@@ -17,7 +17,8 @@ class Core extends WordSpec with Matchers {
     }
   }
   "A single cell universe" should {
-    val listOfOneCell = List(Cell(true))
+    val position = LinearPosition(0)
+    val listOfOneCell = List(Cell(isAlive = true, position))
     val singleCellUniverse: Universe = Universe(listOfOneCell)
 
     "have one alive cell" in {
@@ -30,7 +31,7 @@ class Core extends WordSpec with Matchers {
   "A cell" should {
     "know its position" in {
       val position = LinearPosition(0)
-      Cell(true, position).position shouldBe position
+      Cell(isAlive = true, position).position shouldBe position
     }
   }
 }
