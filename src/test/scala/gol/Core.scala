@@ -34,7 +34,7 @@ class Core extends WordSpec with Matchers {
       Cell(isAlive = true, position).position shouldBe position
     }
   }
-  "A planar universe (only one dimension)" can {
+  "A linear universe (only one dimension)" can {
     "have three cells in it" should {
       val threeCellRow: Seq[Cell] =
         (0 to 2).map(i => Cell(isAlive = true, LinearPosition(i)))
@@ -51,6 +51,11 @@ class Core extends WordSpec with Matchers {
       "should evolve in a empty universe after two ticks" in {
         planarUniverse.tick.tick.howManyAliveCellsInAllUniverse shouldBe 0
       }
+    }
+  }
+  "A planar universe (two dimensions)" should {
+    "exist" in {
+      Universe.withNDimensions(2) shouldBe an[Universe]
     }
   }
 }

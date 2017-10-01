@@ -22,5 +22,7 @@ case class Universe(cells: Seq[Cell]) {
 }
 
 case object Universe {
+  def withNDimensions(i: Int): Universe = ???
+
   def empty: Universe = Universe(List.empty)
 }
