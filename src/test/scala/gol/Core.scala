@@ -27,4 +27,10 @@ class Core extends WordSpec with Matchers {
       singleCellUniverse.tick.howManyAliveCells shouldBe 0
     }
   }
+  "A cell" should {
+    "know its position" in {
+      val position = LinearPosition(0)
+      Cell(true, position).position shouldBe position
+    }
+  }
 }

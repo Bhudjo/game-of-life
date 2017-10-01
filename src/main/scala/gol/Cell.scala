@@ -1,4 +1,5 @@
 package gol
+//its rules could be mixed in with traits
 
 case class Cell(state: Boolean) {
   def evolve(numberNeighboursAlive: Int): Cell = {

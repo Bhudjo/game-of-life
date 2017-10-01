@@ -9,4 +9,8 @@
 - ~an empty universe should have no alive cells~
 
 - ~a single cell universe should have one alive cell~
-- **a single cell universe after one tick should be empty** 
+- ~a single cell universe after one tick should be empty~
+- **a cell should know its own position**
+
+- ?a one dimension universe with 3 cells should stay the same size
+- a one dimension univ with 3 cells should evolve in a universe with one cell alive (the central one)
