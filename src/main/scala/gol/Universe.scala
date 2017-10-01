@@ -1,7 +1,11 @@
 package gol
 
 case class Universe(cells: Seq[Cell]) {
-  def getNeighboursOf(position: LinearPosition): Set[Cell] = Set.empty
+  def getNeighboursOf(position: LinearPosition): Set[Cell] =
+    cells
+      .filter(c =>
+        c.position.i == position.i + 1 || c.position.i == position.i - 1)
+      .toSet
 
   def howManyAliveCells = cells.count(_.isAlive)
 

@@ -42,8 +42,8 @@ class Core extends WordSpec with Matchers {
       val threeCellRow: Seq[Cell] = List(cell0, cell1, cell2)
       val planarUniverse = Universe(threeCellRow)
       "know the neighbours of a cell" in {
-        planarUniverse.getNeighboursOf(cell1.position) should contain(cell0,
-                                                                      cell2)
+        val neighbours = planarUniverse.getNeighboursOf(cell1.position)
+        neighbours should (contain(cell0) and contain(cell2))
       }
     }
   }

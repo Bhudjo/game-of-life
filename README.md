@@ -14,5 +14,5 @@
 - ~a cell should know its own position~
 
 - ?a one dimension universe with 3 cells should stay the same size
-- **a universe should know the neighbours of one of its cell**
+- ~a universe should know the neighbours of one of its cell~
 - a one dimension univ with 3 cells should evolve in a universe with one cell alive (the central one)
