@@ -9,7 +9,8 @@ case class Universe(cells: Seq[Cell]) {
 
   def howManyAliveCells = cells.count(_.isAlive)
 
-  def countAliveNeighboursOf(cell: Cell): Int = 0
+  def countAliveNeighboursOf(cell: Cell): Int =
+    getNeighboursOf(cell.position).count(_.isAlive)
 
   def tick: Universe = {
     val futureCells: Seq[Cell] = cells map { thisCell =>
