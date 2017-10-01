@@ -36,17 +36,20 @@ class Core extends WordSpec with Matchers {
   }
   "A planar universe (only one dimension)" can {
     "have three cells in it" should {
-      val cell0 = Cell(true, LinearPosition(0))
-      val cell1 = Cell(true, LinearPosition(1))
-      val cell2 = Cell(true, LinearPosition(2))
-      val threeCellRow: Seq[Cell] = List(cell0, cell1, cell2)
+      val threeCellRow: Seq[Cell] =
+        (0 to 2).map(i => Cell(isAlive = true, LinearPosition(i)))
       val planarUniverse = Universe(threeCellRow)
+
       "know the neighbours of a cell" in {
-        val neighbours = planarUniverse.getNeighboursOf(cell1.position)
-        neighbours should (contain(cell0) and contain(cell2))
+        val itsNeighbours = planarUniverse getNeighboursOf threeCellRow(1).position
+        itsNeighbours should (contain(threeCellRow.head) and contain(
+          threeCellRow(2)))
       }
       "evolve in a universe with only one cell alive" in {
         planarUniverse.tick.howManyAliveCellsInAllUniverse shouldBe 1
+      }
+      "should evolve in a empty universe after two ticks" in {
+        planarUniverse.tick.tick.howManyAliveCellsInAllUniverse shouldBe 0
       }
     }
   }
