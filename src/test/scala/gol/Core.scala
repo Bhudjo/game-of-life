@@ -45,6 +45,9 @@ class Core extends WordSpec with Matchers {
         val neighbours = planarUniverse.getNeighboursOf(cell1.position)
         neighbours should (contain(cell0) and contain(cell2))
       }
+      "evolve in a universe with only one cell alive" in {
+        planarUniverse.tick.howManyAliveCells shouldBe 1
+      }
     }
   }
 }
