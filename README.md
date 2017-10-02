@@ -4,6 +4,8 @@
 
 #To test
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/54438d77a267467d8486d03be6bbcf4b)](https://www.codacy.com/app/alessandrobuggin_3/game-of-life?utm_source=github.com&utm_medium=referral&utm_content=Bhudjo/game-of-life&utm_campaign=badger)
+
 - ~an empty universe should tick~
 - ~an empty universe should stay empty~
 - ~an empty universe should have no alive cells~
